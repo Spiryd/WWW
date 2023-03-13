@@ -1,0 +1,11 @@
+body{
+    background-color: #28282e;
+    color: whitesmoke;
+}
+.container{
+    background-color: navy;
+}
+#menu{
+    display: grid;
+    gap: 10px 10px;
+}
