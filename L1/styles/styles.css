@@ -6,6 +6,7 @@
     --me_color_2: #336699;
     --portfolio_color_1: #66347F;
     --portfolio_color_2: #9E4784;
+    --interest_color: #E45826;
 }
 
 body{
@@ -32,8 +33,6 @@ img{
 	display: block;
 	border: 0;
 	width: 80%;
-    min-width: none;
-    min-height: none;
     margin: auto;
 	height: auto;
 }
@@ -73,6 +72,9 @@ a{
     #menu{
         margin-top: 5vh;
     }
+    .window{
+        width: 95vw;
+    }
 }
  
 @media screen and (min-width: 60em) {
@@ -100,9 +102,11 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .window{
+    margin-top: 2em;
     background-color: var(--object_background);
     border-radius: 25px;
     height: 75vh;
@@ -127,10 +131,39 @@ footer{
 }
 
 .informationWraper{
-    display: grid;
+    height: 93%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
 }
 
 .info{
+    flex: 1;
     background-color: var(--root_background);
+    margin: 1em;
+    border-radius: 10px;
+}
+
+.link{
+    background-color: var(--me_color_2);
+    width: 90%;
+    color: whitesmoke;
+    border-radius: 5px;
+}
+
+.info p {
     margin: .5em;
+}
+
+.portfolio{
+    background-color: var(--portfolio_color_1);
+}
+
+.project{
+    height: auto;
+}
+
+.interests{
+    background-color: var(--interest_color);
 }
