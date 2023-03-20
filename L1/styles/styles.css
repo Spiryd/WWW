@@ -125,3 +125,12 @@ footer{
     color: var(--highlight_color);
     text-align: center;
 }
+
+.informationWraper{
+    display: grid;
+}
+
+.info{
+    background-color: var(--root_background);
+    margin: .5em;
+}
