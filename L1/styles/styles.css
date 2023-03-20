@@ -16,11 +16,11 @@ body{
     background-size: 40px 40px;
 }
 
-h1 {
+h1{
     text-align: center;
 }
 
-p {
+.card p{
     margin-top: 2em;
     margin-left: .5em;
     margin-right: .5em;
@@ -28,10 +28,12 @@ p {
     font-size: large;
 }
 
-img {
+img{
 	display: block;
 	border: 0;
 	width: 80%;
+    min-width: none;
+    min-height: none;
     margin: auto;
 	height: auto;
 }
@@ -43,14 +45,15 @@ a{
 .card{
     background-color: var(--object_background);
     color: whitesmoke;
-    flex: 1 0 500px;
+    flex: 1 0 250px;
     box-sizing: border-box;
-    margin: 5rem 3em;
+    margin: 3vw 3vw;
     border-radius: 25px;
 }
 
+
 .card:hover{
-    animation: breathe 5s infinite;
+    animation: breathe 4s infinite;
 }
 
 @keyframes breathe {
@@ -61,12 +64,14 @@ a{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
 }
 
 @media screen and (min-width: 40em) {
     .card {
        max-width: calc(100% -  5em);
+    }
+    #menu{
+        margin-top: 5vh;
     }
 }
  
@@ -75,4 +80,48 @@ a{
         height: 80vh;
         max-width: calc(33% - 6em);
     }
+}
+
+header{
+    background-color: var(--object_background);
+    margin-top: 0;
+    padding-top: 0;
+    color: whitesmoke;
+}
+
+.title{
+    margin-top: 0;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    color: whitesmoke;
+}
+
+.contentWraper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.window{
+    background-color: var(--object_background);
+    border-radius: 25px;
+    height: 75vh;
+    width: 75vw;
+    overflow: hidden;
+}
+
+.heading {
+    text-align: center;
+    margin-top: 0;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+#aboutMe{
+    background-color: var(--me_color_2);
+}
+
+footer{
+    color: var(--highlight_color);
+    text-align: center;
 }
