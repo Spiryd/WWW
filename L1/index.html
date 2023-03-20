@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="styles.css" type="text/css">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Maksymilian Neumann</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600&display=swap');
+            @import url('./styles/normalize.css');
+            @import url('./styles/styles.css');
+        </style>
     </head>
     <body>
-        <header>
-            <h1>Maksymilian Neumann</h1>
-        </header>
         <nav id="menu">
-            <div class="container">ok</div>
-            <div class="container">ok</div>
-            <div class="container">ok</div>
+            <a href="./about_me.html" class="card" id="about_me">
+                <h1>About Me</h1>
+                <picture>
+                    <img src="./img/man.jpg" alt="Picture of me (very handsome)">
+                </picture>
+                <p>
+                    Basic Information about me,<br>
+                    My contact information,<br>
+                    My education,<br>
+                    My history,<br>
+                    My links
+                </p>
+            </a>
+            <a href="./portfolio.html" class="card" id="portfolio">
+                <h1>Portfolio</h1>
+                <picture>
+                    <img src="./img/github-mark-white.svg" alt="GitHub logo">
+                </picture>
+                <p>
+                    My portfolio<br>
+                    Everything I write goes here
+                </p>
+            </a>
+            <a href="./my_interests.html" class="card" id="interests">
+                <h1>My Interests</h1>
+                <p>content</p>
+            </a>
         </nav>
-        <footer>
-
-        </footer>
     </body>
 </html>

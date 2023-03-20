@@ -1,0 +1,78 @@
+:root{
+    --root_background: #28282e;
+    --object_background: #16161c;
+    --highlight_color: #494954;
+    --me_color_1: #4d79ff;
+    --me_color_2: #336699;
+    --portfolio_color_1: #66347F;
+    --portfolio_color_2: #9E4784;
+}
+
+body{
+    font-family: 'Roboto Mono', monospace;
+    background-color: var(--root_background);
+    color: whitesmoke; 
+    background-image: radial-gradient(circle at 1px 1px, var(--highlight_color) 1px, transparent 0);
+    background-size: 40px 40px;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    margin-top: 2em;
+    margin-left: .5em;
+    margin-right: .5em;
+    text-align: center;
+    font-size: large;
+}
+
+img {
+	display: block;
+	border: 0;
+	width: 80%;
+    margin: auto;
+	height: auto;
+}
+
+a{
+    text-decoration: none;
+}
+
+.card{
+    background-color: var(--object_background);
+    color: whitesmoke;
+    flex: 1 0 500px;
+    box-sizing: border-box;
+    margin: 5rem 3em;
+    border-radius: 25px;
+}
+
+.card:hover{
+    animation: breathe 5s infinite;
+}
+
+@keyframes breathe {
+    50% {box-shadow: 0px 0px 20px 3px var(--highlight_color);}
+}
+
+#menu{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+@media screen and (min-width: 40em) {
+    .card {
+       max-width: calc(100% -  5em);
+    }
+}
+ 
+@media screen and (min-width: 60em) {
+    .card {
+        height: 80vh;
+        max-width: calc(33% - 6em);
+    }
+}
