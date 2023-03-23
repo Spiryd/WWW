@@ -72,9 +72,6 @@ a{
     #menu{
         margin-top: 5vh;
     }
-    .window{
-        width: 95vw;
-    }
 }
  
 @media screen and (min-width: 60em) {
@@ -109,8 +106,8 @@ header{
     margin-top: 2em;
     background-color: var(--object_background);
     border-radius: 25px;
-    height: 75vh;
-    width: 75vw;
+    height: 80vh;
+    width: 80vw;
     overflow: hidden;
 }
 
@@ -131,7 +128,7 @@ footer{
 }
 
 .informationWraper{
-    height: 93%;
+    height: 90%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -166,4 +163,18 @@ footer{
 
 .interests{
     background-color: var(--interest_color);
+}
+
+.me{
+    height: 25vh;
+    width: auto;
+    margin: auto;
+}
+
+code{
+    overflow: scroll;
+}
+
+pre{
+    overflow: scroll;
 }

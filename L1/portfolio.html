@@ -18,60 +18,60 @@
         </header>
         <main class="contentWraper"  >
             <section class="window project">
-                <p class="heading portfolio">MarketPower</p>
+                <h2 class="heading portfolio">MarketPower</h2>
                 <p>MarketPower to Backend API do web app komunikujący się przez HTTP requesty napisany w rust za pomocą biblioteki actix-web i sqlx. Aplikacja miała dawać moźliwość śledzenia własnego portfolio akcji na runku amerykańskim</p>
                 <pre>
                     <code>
-                        #[get("/auth")]
-                        async fn basic_auth(state: Data<AppState>, credentials: BasicAuth) -> impl Responder {
-                            let jwt_secret: Hmac<Sha256> = Hmac::new_from_slice(
-                                std::env::var("JWT_SECRET")
-                                .expect("JWT_SECRET must be set!")
-                                .as_bytes()
-                            ).unwrap();
-                        let login = credentials.user_id();
-                        let password = credentials.password();
-                        match password {
-                            None => HttpResponse::Unauthorized().json("Must provide longin and password"),
-                            Some(pass) => {
-                                match sqlx::query_as::<_, Account>(
-                                    "SELECT id, login, hashed_password, salt, security_lvl FROM account WHERE login = $1"
-                                )
-                                .bind(login.to_string())
-                                .fetch_one(&state.db_auth)
-                                .await 
-                                {
-                                    Err(error) => HttpResponse::InternalServerError().json(format!("{:?}", error)),
-                                    Ok(user) => {
-                                        let hash_secret = std::env::var("HASH_SECRET").expect("HASH_SECRET must be set!");
-                                        let mut verifier = Verifier::default();
-                                        let is_valid = verifier
-                                            .with_hash(user.hashed_password)
-                                            .with_password(pass)
-                                            .with_secret_key(hash_secret)
-                                            .with_additional_data(user.salt)
-                                            .verify()
-                                            .unwrap();
-                                        if is_valid {
-                                            let claims = TokenClaims {id: user.id, security_lvl: user.security_lvl};
-                                            let token_str = claims.sign_with_key(&jwt_secret).unwrap();
-                                            HttpResponse::Ok().json(token_str)
-                                        } else {
-                                            HttpResponse::Unauthorized().json("incorrect login or password")
-                                        }
-                                    }
-                                }
-                            },
-                        }
-                    </code>
-                </pre>
+#[get("/auth")]
+async fn basic_auth(state: Data<AppState>, credentials: BasicAuth) -> impl Responder {
+    let jwt_secret: Hmac<Sha256> = Hmac::new_from_slice(
+        std::env::var("JWT_SECRET")
+        .expect("JWT_SECRET must be set!")
+        .as_bytes()
+    ).unwrap();
+    let login = credentials.user_id();
+    let password = credentials.password();
+    match password {
+    None => HttpResponse::Unauthorized().json("Must provide longin and password"),
+    Some(pass) => {
+        match sqlx::query_as::<_, Account>(
+            "SELECT id, login, hashed_password, salt, security_lvl FROM account WHERE login = $1"
+        )
+        .bind(login.to_string())
+        .fetch_one(&state.db_auth)
+        .await 
+        { 
+            Err(error) => HttpResponse::InternalServerError().json(format!("{:?}", error)),
+            Ok(user) => {
+                let hash_secret = std::env::var("HASH_SECRET").expect("HASH_SECRET must be set!");
+                let mut verifier = Verifier::default();
+                let is_valid = verifier
+                    .with_hash(user.hashed_password)
+                    .with_password(pass)
+                    .with_secret_key(hash_secret)
+                    .with_additional_data(user.salt)
+                    .verify()
+                    .unwrap();
+                if is_valid {
+                    let claims = TokenClaims {id: user.id, security_lvl: user.security_lvl};
+                    let token_str = claims.sign_with_key(&jwt_secret).unwrap();
+                    HttpResponse::Ok().json(token_str)
+                } else {
+                    HttpResponse::Unauthorized().json("incorrect login or password")
+                }
+            }
+        }
+    },
+}
+            </code>
+            </pre>
             </section>
             <section class="window project">
-                <p class="heading portfolio">AOD</p>
+                <h2 class="heading portfolio">AOD</h2>
                 <p>Jest to implementacja grafów skierowanych i nie skierowanych. Gdzie zaimplementowane jest ich zwiedzanie metodą dfs i bfs z możliwośćią wydrukowania drzewa ścieżki oraz sortowanie tobopogiczne z wykryciem grafu cyklicznego i inne.</p>
             </section>
             <section class="window project">
-                <p class="heading portfolio">checkers</p>
+                <h2 class="heading portfolio">checkers</h2>
                 <p>Jest to implementacja gry w warcaby w Javie za pomocą biblioteki graficznej JavaFx korzystający z wzorca MVC(Model-View-Controller)</p>
             </section>
         </main>
