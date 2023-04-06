@@ -1,0 +1,34 @@
+@use 'lib';
+
+.info {
+    flex: 1;
+    background-color: $root_background;
+    margin: 1em;
+    border-radius: 10px;
+
+    p {
+        margin: .5em;
+    }
+}
+
+.link {
+    background-color: $me_color_2;
+    width: 90%;
+    color: whitesmoke;
+    border-radius: 5px;
+}
+
+.me {
+    height: 25vh;
+    width: auto;
+    margin: auto;
+}
+
+.informationWraper {
+    height: 90%;
+    @include wrapper();
+}
+
+#aboutMe {
+    background-color: $me_color_2;
+}

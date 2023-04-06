@@ -1,0 +1,54 @@
+@use 'lib';
+
+.card {
+    background-color: $object_background;
+    color: whitesmoke;
+    flex: 1 0 250px;
+    box-sizing: border-box;
+    margin: 3vw 3vw;
+    border-radius: 25px;
+
+    &:hover {
+    animation: breathe 4s infinite;
+    }
+
+    p {
+        margin: {
+            top: 2em;
+            left: .5em;
+            right: .5em;
+        }
+        text-align: center;
+        font-size: large;
+    }
+}
+
+@keyframes breathe {
+    50% {
+        box-shadow: 0px 0px 20px 3px $highlight_color;
+    }
+}
+
+#menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 40em) {
+    .card {
+    max-width: calc(100% -  5em);
+    }
+
+    #menu {
+    margin-top: 5vh;
+    }
+}
+
+@media screen and (min-width: 60em) {
+    .card {
+    height: 80vh;
+    max-width: calc(33% - 6em);
+    }
+}
+

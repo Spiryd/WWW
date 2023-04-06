@@ -1,0 +1,79 @@
+$root_background:#28282e;
+$object_background: darken(#28282e, 7%);
+$highlight_color:#494954;
+$me_color_2:#336699;
+$portfolio_color_1:#66347F;
+$interest_color:#E45826;
+
+@mixin wrapper{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+header {
+    background-color: $object_background;
+    margin-top: 0;
+    padding-top: 0;
+    color: whitesmoke;
+}
+
+.title {
+    margin-top: 0;
+    padding: {
+        top: 1vh;
+        bottom: 1vh;
+    }
+    color: whitesmoke;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    background-color: $root_background;
+    color: whitesmoke;
+    background-image: radial-gradient(circle at 1px 1px, $highlight_color 1px, transparent 0);
+    background-size: 40px 40px;
+}
+
+h1 {
+    text-align: center;
+}
+
+img {
+    display: block;
+    border: 0;
+    width: 80%;
+    margin: auto;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+.window {
+    margin-top: 2em;
+    background-color: $object_background;
+    border-radius: 25px;
+    height: 80vh;
+    width: 80vw;
+    overflow: hidden;
+}
+
+.heading {
+    text-align: center;
+    margin-top: 0;
+    padding: {
+        top: 0.5em;
+        bottom: 0.5em;
+    }
+}
+
+.contentWraper {
+    @include wrapper();
+    align-items: center;
+}
+
+code, pre {
+    overflow: scroll;
+}
