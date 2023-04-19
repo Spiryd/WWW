@@ -4,5 +4,85 @@
 @import 'portfolio';
 @import 'interests';
 
-
-
+/* Przycisk hamburgerowy */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.line {
+    display: block;
+    width: 24px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: black;
+    transition: transform 0.3s ease-in-out;
+}
+  
+  /* Menu nawigacyjne */
+.top-menu {
+    display: flex;
+    justify-content: center;
+}
+  
+.top-menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+  
+.top-menu li {
+    margin: 0 10px;
+}
+  
+.top-menu a {
+    display: block;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+}
+  
+  /* Responsywność */
+@media screen and (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+  
+    .top-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: white;
+    }
+  
+    .top-menu ul {
+      flex-direction: column;
+    }
+  
+    .top-menu li {
+      margin: 10px 0;
+    }
+  
+    .active {
+      display: flex;
+    }
+  
+    .line:first-child {
+      transform: translateY(8px) rotate(45deg);
+    }
+  
+    .line:nth-child(2) {
+      opacity: 0;
+    }
+  
+    .line:last-child {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+}
