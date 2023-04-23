@@ -9,32 +9,26 @@ const canvas = document.getElementById("canvas");
 const resultText = document.getElementById("result-text");
 
 //Options values for buttons
-let options = {
-    fruits: [
-        "Apple",
-        "Blueberry",
-        "Mandarin",
-        "Pineapple",
-        "Pomegranate",
-        "Watermelon",
-    ],
-    animals: [
-        "Hedgehog", 
-        "Rhinoceros", 
-        "Squirrel", 
-        "Panther", 
-        "Walrus", 
-        "Zebra",
-    ],
-    countries: [
-        "India",
-        "Hungary",
-        "Kyrgyzstan",
-        "Switzerland",
-        "Zimbabwe",
-        "Dominica",
-    ],
-};
+let words = [
+    "Apple",
+    "Blueberry",
+    "Mandarin",
+    "Pineapple",
+    "Pomegranate",
+    "Watermelon",
+    "Hedgehog", 
+    "Rhinoceros", 
+    "Squirrel", 
+    "Panther", 
+    "Walrus", 
+    "Zebra",
+    "India",
+    "Hungary",
+    "Kyrgyzstan",
+    "Switzerland",
+    "Zimbabwe",
+    "Dominica",
+];
 
 //count
 let winCount = 0;
@@ -42,25 +36,9 @@ let count = 0;
 
 let chosenWord = "";
 
-//Display option buttons
-const displayOptions = () => {
-    optionsContainer.innerHTML += `<h3>Please Select An Option</h3>`;
-    let buttonCon = document.createElement("div");
-    for (let value in options) {
-        buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}')">${value}</button>`;
-    }
-    optionsContainer.appendChild(buttonCon);
-};
-
 //Block all the Buttons
 const blocker = () => {
-    let optionsButtons = document.querySelectorAll(".options");
     let letterButtons = document.querySelectorAll(".letters");
-    //disable all options
-    optionsButtons.forEach((button) => {
-        button.disabled = true;
-    });
-
     //disable all letters
     letterButtons.forEach((button) => {
         button.disabled.true;
@@ -69,23 +47,12 @@ const blocker = () => {
 };
 
 //Word Generator
-const generateWord = (optionValue) => {
-    let optionsButtons = document.querySelectorAll(".options");
-    //If optionValur matches the button innerText then highlight the button
-    optionsButtons.forEach((button) => {
-        if (button.innerText.toLowerCase() === optionValue) {
-            button.classList.add("active");
-        }
-        button.disabled = true;
-    });
-
+const generateWord = () => {
     //initially hide letters, clear previous word
-    letterContainer.classList.remove("hide");
     userInputSection.innerText = "";
 
-    let optionArray = options[optionValue];
     //choose random word
-    chosenWord = optionArray[Math.floor(Math.random() * optionArray.length)];
+    chosenWord = words[Math.floor(Math.random() * words.length)];
     chosenWord = chosenWord.toUpperCase();
 
     //replace every letter with span containing dash
@@ -99,13 +66,12 @@ const generateWord = (optionValue) => {
 const initializer = () => {
     winCount = 0;
     count = 0;
-
     //Initially erase all content and hide letteres and new game button
     userInputSection.innerHTML = "";
-    optionsContainer.innerHTML = "";
-    letterContainer.classList.add("hide");
     newGameContainer.classList.add("hide");
     letterContainer.innerHTML = "";
+
+    generateWord();
 
     //For creating letter buttons
     for (let i = 65; i < 91; i++) {
@@ -151,7 +117,6 @@ const initializer = () => {
         letterContainer.append(button);
     }
 
-    displayOptions();
     //Call to canvasCreator (for clearing previous canvas and creating initial canvas)
     let { initialDrawing } = canvasCreator();
     //initialDrawing would draw the frame
@@ -160,65 +125,66 @@ const initializer = () => {
 
 //Canvas
 const canvasCreator = () => {
-  let context = canvas.getContext("2d");
-  context.beginPath();
-  context.strokeStyle = "#000";
-  context.lineWidth = 2;
-
-  //For drawing lines
-  const drawLine = (fromX, fromY, toX, toY) => {
-    context.moveTo(fromX, fromY);
-    context.lineTo(toX, toY);
-    context.stroke();
-  };
-
-  const head = () => {
+    let context = canvas.getContext("2d");
     context.beginPath();
-    context.arc(70, 30, 10, 0, Math.PI * 2, true);
-    context.stroke();
-  };
+    context.strokeStyle = "#000";
+    context.lineWidth = 2;
 
-  const body = () => {
-    drawLine(70, 40, 70, 80);
-  };
+    //For drawing lines
+    const drawLine = (fromX, fromY, toX, toY) => {
+        context.moveTo(fromX, fromY);
+        context.lineTo(toX, toY);
+        context.stroke();
+    };
 
-  const leftArm = () => {
-    drawLine(70, 50, 50, 70);
-  };
+    const head = () => {
+        context.beginPath();
+        context.arc(70, 30, 10, 0, Math.PI * 2, true);
+        context.stroke();
+    };
 
-  const rightArm = () => {
-    drawLine(70, 50, 90, 70);
-  };
+    const body = () => {
+        drawLine(70, 40, 70, 80);
+    };
 
-  const leftLeg = () => {
-    drawLine(70, 80, 50, 110);
-  };
+    const leftArm = () => {
+        drawLine(70, 50, 50, 70);
+    };
 
-  const rightLeg = () => {
-    drawLine(70, 80, 90, 110);
-  };
+    const rightArm = () => {
+        drawLine(70, 50, 90, 70);
+    };
 
-  const gallows1 = () => {
-    drawLine(10, 130, 130, 130);
-  };
+    const leftLeg = () => {
+        drawLine(70, 80, 50, 110);
+    };
 
-  const gallows2 = () => {
-    drawLine(10, 10, 10, 131);
-  };
+    const rightLeg = () => {
+        drawLine(70, 80, 90, 110);
+    };
 
-  const gallows3 = () => {
-    drawLine(10, 10, 70, 10);
-  };
+    const gallows1 = () => {
+        drawLine(10, 130, 130, 130);
+    };
 
-  const gallows4 = () => {
-    drawLine(70, 10, 70, 20);
-  };
-  //initial frame
-  const initialDrawing = () => {
-    context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-  };
+    const gallows2 = () => {
+        drawLine(10, 10, 10, 131);
+    };
 
-  return { initialDrawing, gallows1, gallows2, gallows3, gallows4, head, body, leftArm, rightArm, leftLeg, rightLeg };
+    const gallows3 = () => {
+        drawLine(10, 10, 70, 10);
+    };
+
+    const gallows4 = () => {
+        drawLine(70, 10, 70, 20);
+    };
+
+    //clear frame
+    const initialDrawing = () => {
+        context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+    };
+
+    return { initialDrawing, gallows1, gallows2, gallows3, gallows4, head, body, leftArm, rightArm, leftLeg, rightLeg };
 };
 
 //draw the man
