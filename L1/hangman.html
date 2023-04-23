@@ -13,7 +13,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
-        <header>
+         <header>
             <div class="c"> 
                <nav class="navbar">
                   <a href="./index.html" class="nav-branding">DEV.</a>
@@ -32,11 +32,19 @@
                   </div>
                </nav>
             </div>
-        </header>
-        <main>
-
-        </main>
-        <script src="menu.js"></script>
-        <script src="hangman.js"></script>
+         </header>
+         <main class="game">
+            <div id="options-container"></div>
+            <div id="letter-container" class="letter-container hide"></div>
+            <div id="user-input-section"></div>
+            <canvas id="canvas"></canvas>
+            <button id="restart-game-button">Restart Game</button>
+            <div id="new-game-container" class="new-game-popup hide">
+               <div id="result-text"></div>
+               <button id="new-game-button">New Game</button>
+            </div>
+         </main>
+         <script src="menu.js"></script>
+         <script src="hangman.js"></script>
     </body>
 </html>
