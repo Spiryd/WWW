@@ -539,6 +539,7 @@ a {
   .nav-menu {
     position: fixed;
     left: -100%;
+    z-index: 1;
     top: 70px;
     gap: 0;
     flex-direction: column;
