@@ -32,14 +32,6 @@ let count = 0;
 
 let chosenWord = "";
 
-const blocker = function () {
-    let letterButtons = document.querySelectorAll(".letters");
-    letterButtons.forEach( function (button) {
-        button.disabled.true;
-    });
-    newGameContainer.classList.remove("hide");
-};
-
 const generateWord = function () {
     userInputSection.innerText = "";
 
@@ -74,7 +66,7 @@ const initializer = function () {
                         winCount += 1;
                         if (winCount == charArray.length) {
                             resultText.innerHTML = `<h2 class='win-msg'>You Win!!</h2><p>The word was <span>${chosenWord}</span></p>`;
-                            blocker();
+                            newGameContainer.classList.remove("hide");
                         }
                     }
                 });
@@ -83,7 +75,7 @@ const initializer = function () {
                 drawMan(count);
                 if (count == 10) {
                     resultText.innerHTML = `<h2 class='lose-msg'>You Lose!!</h2><p>The word was <span>${chosenWord}</span></p>`;
-                    blocker();
+                    newGameContainer.classList.remove("hide");
                 }
             }
             button.disabled = true;
