@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
 
 // Połączenie z bazą danych MongoDB
 mongoose.connect('mongodb://127.0.0.1/notes', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -18,6 +19,20 @@ const Note = mongoose.model('Note', noteSchema);
 const app = express();
 
 app.use(express.json());
+
+// Endpoint: User login
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+
+  // Check if the credentials are valid
+  if (username === 'admin' && password === 'admin') {
+    // Generate a JWT
+    const token = jwt.sign({ user: username }, secretKey);
+    res.json({ token });
+  } else {
+    res.status(401).json({ message: 'Invalid credentials' });
+  }
+});
 
 // Endpoint: Zwraca listę wszystkich notatek
 app.get('/note', async (req, res) => {
@@ -65,7 +80,7 @@ app.put('/note/:id', getNote, async (req, res) => {
 // Endpoint: Usuwa notatkę według ID
 app.delete('/note/:id', getNote, async (req, res) => {
   try {
-    await res.note.remove();
+    await Note.findByIdAndDelete(req.params.id)
     res.json({ message: 'Note deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });
