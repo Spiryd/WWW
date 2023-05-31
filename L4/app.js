@@ -20,19 +20,6 @@ const app = express();
 
 app.use(express.json());
 
-// Endpoint: User login
-app.post('/login', (req, res) => {
-  const { username, password } = req.body;
-
-  // Check if the credentials are valid
-  if (username === 'admin' && password === 'admin') {
-    // Generate a JWT
-    const token = jwt.sign({ user: username }, secretKey);
-    res.json({ token });
-  } else {
-    res.status(401).json({ message: 'Invalid credentials' });
-  }
-});
 
 // Endpoint: Zwraca listę wszystkich notatek
 app.get('/note', async (req, res) => {
